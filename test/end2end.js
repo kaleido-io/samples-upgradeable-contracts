@@ -61,6 +61,7 @@ contract("Upgradeable contracts test", async (accounts) => {
             "type": "uint256"
           }
         ]}, [10]);
+      console.log(`Encoded invocation data: ${data}`);
 
       proxy = await Proxy.new(ss_v1.address, data);
     });
