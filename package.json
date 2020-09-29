@@ -17,6 +17,6 @@
     "truffle-assertions": "^0.8.0"
   },
   "dependencies": {
-    "@openzeppelin/upgrades": "^2.8.0"
+    "@openzeppelin/upgrades": "2.6.0-byzantium.0"
   }
 }
