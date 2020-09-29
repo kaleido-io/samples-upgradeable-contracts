@@ -1,0 +1,23 @@
+{
+  "name": "kaleido-samples-upgradeable-contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "address": "truffle exec addresses.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "bignumber.js": "^6.0.0",
+    "truffle": "^5.0.0",
+    "truffle-assertions": "^0.8.0"
+  },
+  "dependencies": {
+    "@openzeppelin/upgrades": "^2.8.0"
+  }
+}
