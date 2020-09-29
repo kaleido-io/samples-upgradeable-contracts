@@ -66,7 +66,7 @@ Because the proxy contract has no knowledge of the target contract's ABI, but it
     * set
     * get
 
-The merged ABI is available in the file `resources/combined-proxy-and-implementation-abi.json`.
+The merged ABI is available in the file `resources/combined-proxy-and-implementation-abi_v1.json`.
 
 The bytecode can be obtained from the truffle compile:
 ```
@@ -102,6 +102,14 @@ Suppose we have an updated contract implementation, `simplestorage_v2.sol`.
 
 It can be deployed again as a normal contract, just like for version 1. Record the address of the new deployment.
 
+### Update the ABI of the proxy contract
+Since the new contract version introduced a new function, `query()`, we want to update the ABI spec of the managed contract in Kaleido, so that the REST API Gateway can be made aware of the new function.
+
+Navigate back up to the Network section and find the contract project under **Shared Assets -> Contract Projects**, locate the compilation for the proxy contract and open the details panel for it, click on the pencil button next to the **ABI** display, and paste the JSON from the file `resources/combined-proxy-and-implementation-abi_v2.json`. Click Save.
+
+In the upper right corner, find the ![refresh button](/resources/refresh.png) button in order to re-sync the environments with the updated ABI.
+
+### Re-initialize the proxy contract to point to v2
 Now we just need to update the proxy contract to tell it about the new version's address, by calling the `updateTo()` method:
 
 ![upgrade proxy](/resources/upgrade-impl.png)
@@ -110,4 +118,4 @@ Now we just need to update the proxy contract to tell it about the new version's
 After the upgradeTo call, you can query the proxy contract for states to confirm that the existing states from the previous versions are successfully inherited.
 
 ### Start calling the upgraded implementation methods on the proxy contract
-Now the upgraded proxy contract is ready for use, with the new implementation doing the transaction process going forward.
+Now the upgraded proxy contract is ready for use, with the new implementation doing the transaction process going forward. Also notice the new function `query()` implemented by v2 becoming available in the REST API Gateway.
